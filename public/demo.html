@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resizer API Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+</head>
+<body>
+  <h1>Resizer API Demo</h1>
+  <h3>Kyle Germaine</h3>
+  <div id="img"></div>
+  <script>
+    const resizeProps = {
+      width:400,
+      height:600,
+      fit: "contain",
+      cacheLength: 0
+    } 
+    const imgUrl = "https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a"
+    const resizeQuery = Object.entries(resizeProps)
+      .map(([prop,val]) => `${prop}=${val}`)
+      .join('&')
+    
+    const img = document.createElement('img');
+    img.src = `http://localhost:3000/api/img-resize?url=${imgUrl}&${resizeQuery}`;
+    const imageContainer = document.getElementById('img');
+    imageContainer.appendChild(img);
+  </script>
+</body>
+</html>
